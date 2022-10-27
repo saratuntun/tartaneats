@@ -1,0 +1,84 @@
+{% extends "tartan_eats/base.html" %} 
+
+
+{% block navbar %} 
+<li>
+  <a href="{% url 'customer-home' %}">Home</a>
+</li>
+<!-- / Home -->
+<!-- My Orders -->
+<li>
+  <a href="{% url 'customer-history-order' %}">My Orders</a>
+</li>
+<!-- / My Orders -->
+<!-- My Account -->
+<li>
+  <a href="{% url 'customer-account' %}">My Account</a>
+</li>
+{% endblock %}
+
+{% block pagename %} 
+<section class="page-header">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="content">
+        <h1 class="page-name">My Account</h1>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}
+
+
+{% block content %}
+<section class="user-dashboard page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="dashboard-wrapper dashboard-user-profile">
+          <div class="media">
+
+            <!-- form  -->
+            <div class="contact-form col-md-6 ">
+                    <!-- customer picture  -->
+              <div class="customer-picture" style="width:50%; margin: 20px; float:left">
+                {% if not customer.customer_picture %}
+                {% load static %}
+                <img class="media-object user-img" src="{% static 'images/cute.jpeg' %}" alt=''/>
+                {% else %}
+                <img class="media-object user-img" src="{% url 'customer-photo' %}" alt="customer picture" >
+                {% endif %}
+              </div>
+              <form enctype="multipart/form-data" id="contact-form" method="post" action="{% url 'customer-account' %}" >
+                <table>
+                  {% for field in form.visible_fields %}
+                      <tr>
+                          <td>{{field.label_tag}}</td>
+                          <td>{{field}}</td>
+                          <td class="error">
+                              {% for error in field.errors %} {{error}} {% endfor %}
+                          </td>
+                      </tr>
+                  {% endfor %}
+              </table>
+            {% csrf_token %}
+            <!-- submit button -->
+            <div class="cutsomer-page-op-btm">
+              <button type="submit">Save Changes</button>
+            </div>
+              <!-- / info  -->
+            </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+
+

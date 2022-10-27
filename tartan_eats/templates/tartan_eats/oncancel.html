@@ -1,0 +1,35 @@
+{% extends "tartan_eats/base.html" %} 
+
+{% block navbar %} 
+<li>
+  <a href="{% url 'customer-home' %}">Home</a>
+</li>
+<!-- / Home -->
+<!-- My Orders -->
+<li>
+  <a href="{% url 'customer-history-order' %}">My Orders</a>
+</li>
+<!-- / My Orders -->
+<!-- My Account -->
+<li>
+  <a href="{% url 'customer-account' %}">My Account</a>
+</li>
+{% endblock %}
+
+
+{% block content %}
+<section class="page-wrapper fail-msg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="block text-center">
+            <i class="fa-solid fa-rectangle-xmark" style="font-size:50px; color:#db2e18;"></i>
+              <h2 class="text-center">Payment Canceled!</h2>
+              <p>Sorry, your order payment was canceled for some reason</p>
+              <a href="{% url 'customer-checkout' order.id%}" class="btn btn-main mt-20">Back to checkout page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

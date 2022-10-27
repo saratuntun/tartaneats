@@ -1,0 +1,368 @@
+.body {
+  background: #f6ece1;
+}
+
+.container1 {
+  position: absolute;
+  left: 100px;
+  width: 1000px;
+  height: 800px;
+  top: 150px;
+}
+
+.tartan {
+  /* Tartan Eats */
+
+  position: absolute;
+  width: 185px;
+  height: 45px;
+  left: 123px;
+  top: 46px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 139.8%;
+  /* identical to box height, or 45px */
+
+  color: #1f9259;
+}
+
+.icon-bowl {
+  position: absolute;
+  left: 90px;
+  top: 80px;
+  font-size: 200px;
+}
+
+.nav-links {
+  position: absolute;
+  width: 450px;
+  height: 22px;
+  left: 533px;
+  top: 80px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 94.8%;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+}
+.post-input {
+  max-width: 400px;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="field"] {
+  margin-bottom: 3px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="lastfield"] {
+  margin-bottom: 15px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.big-heading {
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 25px 50px;
+}
+
+.user-info {
+  text-align: right;
+  font-family: sans-serif;
+  padding-right: 10px;
+  font-size: x-large;
+}
+
+.message {
+  color: blue;
+  text-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  font-family: sans-serif;
+  padding: 25px 50px;
+}
+
+.search-bar {
+  text-align: center;
+  padding: 25px 50px;
+}
+
+.content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  font-family: sans-serif;
+  font-size: x-large;
+  padding: 25px 50px;
+}
+
+.errorlist {
+  color: red;
+}
+
+.list {
+  padding: 3px;
+}
+
+.list-link {
+  padding: 5px;
+}
+
+.list-link:hover {
+  background-color: lightgray;
+}
+
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  font-size: x-large;
+  padding: 3px;
+}
+
+input {
+  font-size: x-large;
+}
+
+div,
+form {
+  padding: 4px;
+}
+
+.navlink {
+  background-color: lightgray;
+}
+
+.letter {
+  padding: 3px;
+  font-family: sans-serif;
+  font-size: x-large;
+}
+
+.letter:hover {
+  background-color: lightgray;
+}
+
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+}
+
+.info {
+  text-align: left;
+  padding: 20px;
+  height: 158px;
+}
+
+.cart {
+  float: right;
+}
+
+.cart_picture {
+  position: absolute;
+  left: 650px;
+}
+
+.cart_items {
+  margin-left: 0 px;
+}
+
+.btn-numbox {
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.btn-numbox li {
+  float: left;
+}
+
+.btn-numbox li .number,
+.kucun {
+  display: inline-block;
+  font-size: 12px;
+  color: #808080;
+  vertical-align: sub;
+}
+
+.btn-numbox .count {
+  overflow: hidden;
+  margin: 0 16px 0 -20px;
+}
+
+.btn-numbox .count .num-jian,
+.input-num,
+.num-jia {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+  border: 1px solid #e6e6e6;
+}
+.btn-numbox .count .input-num {
+  width: 58px;
+  height: 26px;
+  color: #333;
+}
+
+.place-order {
+  position: absolute;
+  bottom: 0;
+}
+
+.single-cuisine {
+  white-space: nowrap;
+}
+
+.add-cuisine {
+  white-space: nowrap;
+}
+
+#add-cuisine-text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 160%;
+}
+
+#menu-text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 160%;
+}
+
+#res-desp-header {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 160%;
+  /* or 29px */
+  letter-spacing: 0.2px;
+  color: #6b6f70;
+}
+
+#res-info {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 160%;
+  /* or 19px */
+  letter-spacing: 0.2px;
+  color: #6b6f70;
+}
+
+#res-name {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 160%;
+  /* or 70px */
+  letter-spacing: 0.2px;
+  /* Primeraly/Black */
+  color: #383c3e;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.res-column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+#logout_link {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 700;
+  color: #6b6f70;
+  padding-left: 500px;
+}
+
+.tab {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  height: 300px;
+}
+
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  width: 70%;
+  border-left: none;
+  height: 300px;
+  white-space: nowrap;
+}
+
+.cuisine-input {
+  width: 110px;
+}

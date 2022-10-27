@@ -1,0 +1,52 @@
+{% extends "tartan_eats/base.html" %}
+
+{% block navbar %}
+    <li>
+        <a href="{% url 'order-list' %}">My Orders</a>
+    </li>
+    <li>
+        <a href="{% url 'restaurant-home' %}">My Account</a>
+    </li>
+{% endblock %}
+
+
+
+{% block pagename %}
+<section class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="content">
+          <h1 class="page-name" style="text-transform: capitalize">Restaurant - {{ order.order_status }} Order</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="user-dashboard" style="padding-bottom: 70px">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="dashboard-wrapper dashboard-user-profile">
+          <div class="media">
+            <div class="media-body">
+              <ul class="user-profile-list" style="width: 800px">
+                <li><span>Order:</span>#{{order.id}}</li>
+                <li><span>Order time:</span>{{order.order_time}}</li>
+                <li><span>Total:</span>${{order.total_amount}}</li>
+                <li><span>Tax:</span>${{order.tax}}</li>
+                <li><span>Status:</span>{{order.order_status}}</li>
+                  <li><span>Driver:</span>{{ driver.firstname }} {{ driver.lastname }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

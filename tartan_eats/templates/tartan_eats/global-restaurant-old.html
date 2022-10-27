@@ -1,0 +1,106 @@
+{% extends "tartan_eats/base.html" %} 
+{% block navbar %}
+<a id="id_register_link" style="text-decoration: underline;">Home</a> &emsp;
+<a id="id_register_link">My Orders</a>&emsp;
+<a id="id_register_link" href="{% url 'customer-account' %}">My Account</a>
+{% endblock %}
+{% block content %}
+<h1 class="sub-title"> Restaurants </h1>
+  <main>
+    <div class="column">
+      <div class="photo"><img id="id_user_picture1" src="/static/tartan_eats/media/pic1.jpeg" width="150" height="150"></div>
+      <div class="photo"><img id="id_user_picture2" src="/static/tartan_eats/media/pic2.jpeg" width="150" height="150" ></div> 
+      <div class="photo"><img id="id_user_picture3" src="/static/tartan_eats/media/pic3.jpeg" width="150" height="150" ></div> 
+      <div class="photo"><img id="id_user_picture4" src="/static/tartan_eats/media/pic4.jpeg" width="150" height="150" ></div> 
+    </div>
+
+    <div class="column">
+      <div class="info">
+        <a id="restaurant_name" href="{% url 'single-restaurant' %}">Restaurant1</a>
+        <br />
+        <label id="price">$$</label>
+        <br />
+        <label id="distance">30-40min, 1.7 miles</label>
+        <br />
+      </div>
+
+      <div class="info">
+        <a id="restaurant_name" href="{% url 'single-restaurant' %}">Restaurant2</a>
+        <br />
+        <label id="price">$$</label>
+        <br />
+        <label id="distance">30-40min, 1.7 miles</label>
+        <br />
+      </div> 
+
+      <div class="info">
+        <a id="restaurant_name" href="{% url 'single-restaurant' %}">Restaurant3</a>
+        <br />
+        <label id="price">$$</label>
+        <br />
+        <label id="distance">30-40min, 1.7 miles</label>
+        <br />
+      </div>
+
+      <div class="info">
+        <a id="restaurant_name" href="{% url 'single-restaurant' %}">Restaurant4</a>
+        <br />
+        <label id="price">$$</label>
+        <br />
+        <label id="distance">30-40min, 1.7 miles</label>
+        <br />
+      </div> 
+    </div>
+
+    <div class="column">
+      <div class="photo"><img id="id_user_picture5" src="/static/tartan_eats/media/pic5.jpeg" width="150" height="150" ></div> 
+      <div class="photo"><img id="id_user_picture6" src="/static/tartan_eats/media/pic6.jpeg" width="150" height="150" ></div> 
+      <div class="photo"><img id="id_user_picture7" src="/static/tartan_eats/media/pic7.jpeg" width="150" height="150" ></div>
+      <div class="photo"><img id="id_user_picture8" src="/static/tartan_eats/media/pic8.jpeg" width="150" height="150" ></div>
+    </div>
+    
+ 
+    <div class="column">
+      <div class="info">
+        <a id="restaurant_name" href="{% url 'single-restaurant' %}">Restaurant5</a>
+        <br />
+        <label id="price">$$</label>
+        <br />
+        <label id="distance">30-40min, 1.7 miles</label>
+        <br />
+      </div> 
+
+      <div class="info">
+        <a id="restaurant_name" href="{% url 'single-restaurant' %}">Restaurant6</a>
+        <br />
+        <label id="price">$$</label>
+        <br />
+        <label id="distance">30-40min, 1.7 miles</label>
+        <br />
+      </div>
+      <div class="info">
+        <a id="restaurant_name" href="{% url 'single-restaurant' %}">Restaurant7</a>
+        <br />
+        <label id="price">$$</label>
+        <br />
+        <label id="distance">30-40min, 1.7 miles</label>
+        <br />
+      </div>
+  
+  
+      <div class="info">  
+        <a id="restaurant_name" href="{% url 'single-restaurant' %}">Restaurant8</a>
+        <br />
+        <label id="price">$$</label>
+        <br />
+        <label id="distance">30-40min, 1.7 miles</label>
+        <br />
+      </div>
+    </div>
+
+    
+
+  <div class="mt-5 mb-3 text-muted">&copy; Tartan Eats</div>
+  </main>
+
+{% endblock %}

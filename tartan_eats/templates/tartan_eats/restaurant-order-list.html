@@ -1,0 +1,119 @@
+<!--
+THEME: Aviato | E-commerce template
+VERSION: 1.0.0
+AUTHOR: Themefisher
+
+HOMEPAGE: https://themefisher.com/products/aviato-e-commerce-template/
+DEMO: https://demo.themefisher.com/aviato/
+GITHUB: https://github.com/themefisher/Aviato-E-Commerce-Template/
+
+WEBSITE: https://themefisher.com
+TWITTER: https://twitter.com/themefisher
+FACEBOOK: https://www.facebook.com/themefisher
+-->
+{% extends "tartan_eats/base.html" %}
+{% block navbar %}
+    <li>
+        <a href="{% url 'order-list' %}">My Orders</a>
+    </li>
+    <li>
+        <a href="{% url 'restaurant-home' %}">My Account</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<!-- Main Menu Section -->
+<section class="menu">
+    <nav class="navbar navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <h2 class="menu-title">Main Menu</h2>
+            </div><!-- / .navbar-header -->
+
+
+        </div><!-- / .container -->
+    </nav>
+</section>
+
+
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content">
+                    <h1 class="page-name">{{ restaurant.restaurant_name }} - Order List</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-inline dashboard-menu text-center">
+                    <li><a id="pending" class="{{ pending_class }}" href="{%  url 'order-list' "pending"%}">Pending
+                        Order</a></li>
+                    <li><a id="delivery" class="{{ in_delivery_class }}"  href="{%  url 'order-list' "in-delivery"%}"
+                    >In
+                        Delivery</a></li>
+                    <li><a class="{{ completed_class }}" id="completed"  href=
+                            "{%  url 'order-list' "completed"%}">Completed
+                        Order</a></li>
+
+                </ul>
+
+                {% for order in order_list %}
+                    <div class="dashboard-wrapper dashboard-user-profile">
+                        <a href="{%  url 'restaurant-order' order.id %}">
+                            <div class="media">
+                                <div class="media-body">
+                                    <ul class="user-profile-list">
+                                        <li><span>Order ID:</span>{{ order.id }}</li>
+                                        <li><span>Order Time: </span>{{ order.order_time }}</li>
+                                        <li><span>Subtotal:</span>{{ order.subtotal }}</li>
+                                        <li><span>Tax:</span>{{ order.tax }}</li>
+                                        <li><span>Total Amount:</span>{{ order.total_amount }}</li>
+                                        <li><span>Status:</span>{{ order.order_status }}</li>
+                                        <li><span>User:</span>{{ order.customer.firstname }} {{ order.customer.lastname  }}</li>
+                                        <li><span>Restaurant:</span>{{ order.restaurant.restaurant_name }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {%  endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+    {% if error is not None %}
+        <script>
+            alert('{{ error }}');
+        </script>
+    {% endif %}
+{% endblock  %}
+
+{#<script>#}
+{#    function setActive(item) {#}
+{#        a = document.getElementById(item.id)#}
+{#        let delivery = document.getElementById("delivery")#}
+{#        let pending = document.getElementById("pending")#}
+{#        let completed = document.getElementById("completed")#}
+{#        if (a.id === 'pending') {#}
+{#            delivery.className = ""#}
+{#            completed.className = ""#}
+{#            a.className = 'active'#}
+{#        } else if (a.id === 'delivery') {#}
+{#            pending.className = ""#}
+{#            completed.className = ""#}
+{#            a.className = 'active'#}
+{#        } else if (a.id === 'completed') {#}
+{#            pending.className = ""#}
+{#            delivery.className = ""#}
+{#            a.className = 'active'#}
+{#        }#}
+{##}
+{#    }#}
+{#</script>#}
+

@@ -1,0 +1,68 @@
+{% extends "tartan_eats/base.html" %}
+
+{% block navbar %}
+    <li>
+        <a href="{% url 'order-list' %}">My Orders</a>
+    </li>
+    <li>
+        <a href="{% url 'restaurant-home' %}">My Account</a>
+    </li>
+{% endblock %}
+
+
+{% block pagename %}
+    <section class="menu">
+        <nav class="navbar navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <h2 class="menu-title">Main Menu</h2>
+                </div><!-- / .navbar-header -->
+
+            </div><!-- / .container -->
+        </nav>
+    </section>
+    <section class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="content">
+                        <h1 class="page-name" style="text-transform: capitalize">Restaurant - {{ order.order_status }} Order</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %} {% block content %}
+    <section class="user-dashboard" style="padding-bottom: 70px">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="dashboard-wrapper dashboard-user-profile">
+                        <div class="media">
+                            <div class="media-body">
+                                <ul class="user-profile-list" style="width: 450px">
+                                    <li><span>Order:</span>#{{order.id}}</li>
+                                    <li><span>Order time:</span>{{order.order_time}}</li>
+                                    <li><span>Total:</span>${{order.total_amount}}</li>
+                                    <li><span>Tax:</span>${{order.tax}}</li>
+                                    <li><span>Status:</span>{{order.order_status}}</li>
+                                    <li><span>Driver:</span>{{ driver.firstname }} {{ driver.lastname }}</li>
+                                    <li><span>Restaurant Location:</span>{{ order.restaurant.restaurant_address }}</li>
+                                    <li><span>Customer Location:</span>{{ customer_full_address }} </li>
+
+                                </ul>
+                            </div>
+                            <div class="media-body">
+                                <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+                                        src="https://www.google.com/maps/embed/v1/directions?origin=place_id:{{ realtime_position_id }}&destination=place_id:{{destination_id  }}&key={{ key }}">
+                                </iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

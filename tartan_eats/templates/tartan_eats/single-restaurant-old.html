@@ -1,0 +1,128 @@
+{% extends "tartan_eats/base-old.html" %} 
+{% block navbar %}
+<a id="id_register_link" style="text-decoration: underline;">Home</a> &emsp;
+<a id="id_register_link">My Orders</a>&emsp;
+<a id="id_register_link" href="{% url 'customer-account' %}">My Account</a>
+<div class="cart"><img id="id_user_picture4" src="/static/tartan_eats/media/cart.jpg" width="50" height="50" ></div> 
+{% endblock %}
+{% block content %}
+<h1 class="sub-title">Sichuan Gourment  </h1>
+  <main>
+    <div class="column">
+      <div class="photo"><img id="id_user_picture1" src="/static/tartan_eats/media/pic1.jpeg" width="150" height="150"></div>
+      <div class="photo"><img id="id_user_picture2" src="/static/tartan_eats/media/pic2.jpeg" width="150" height="150" ></div> 
+      <div class="photo"><img id="id_user_picture3" src="/static/tartan_eats/media/pic3.jpeg" width="150" height="150" ></div> 
+      <div class="photo"><img id="id_user_picture4" src="/static/tartan_eats/media/pic4.jpeg" width="150" height="150" ></div> 
+    </div>
+
+    <div class="column">
+      <div class="order_option">
+        <a id="cuisine_name">Fried Chicken     $18.99</a>
+        <br />
+        <label id="cuisine description">Fried Chicken with Cola</label>
+        <br />
+        <div class="btn-numbox">
+            <div class="count">
+                <span id="num-jian" class="num-jian">-</span> 
+                <input type="text" class="input-num" id="input-num" value="0" /> 
+                <span id="num-jia" class="num-jia">+</span>
+                <button type="submit">Add</button>
+            </div>
+        </div>
+        <br />
+      </div>
+
+      <div class="order_option">
+        <a id="cuisine_name">Family Bucket       $28.99</a>
+        <br />
+        <label id="cuisine description">Family Enjoy Set</label>
+        <br />
+        <div class="btn-numbox">
+            <div class="count">
+                <span id="num-jian" class="num-jian">-</span> 
+                <input type="text" class="input-num" id="input-num" value="0" /> 
+                <span id="num-jia" class="num-jia">+</span>
+                <button type="submit">Add</button>
+            </div>
+        </div>
+        <br />
+      </div>
+
+      <div class="order_option">
+        <a id="cuisine_name">Roll with Drink      $23.00</a>
+        <br />
+        <label id="cuisine description"> beef, chicken, shrimp</label>
+        <br />
+        <div class="btn-numbox">
+            <div class="count">
+                <span id="num-jian" class="num-jian">-</span> 
+                <input type="text" class="input-num" id="input-num" value="0" /> 
+                <span id="num-jia" class="num-jia">+</span>
+                <button type="submit">Add</button>
+            </div>
+        </div>
+        <br />
+      </div>
+
+      <div class="order_option">
+        <a id="cuisine_name">pizza      $8.99</a>
+        <br />
+        <label id="cuisine description">Italian favor.</label>
+        <br />
+        <div class="btn-numbox">
+            <div class="count">
+                <span id="num-jian" class="num-jian">-</span> 
+                <input type="text" class="input-num" id="input-num" value="0" /> 
+                <span id="num-jia" class="num-jia">+</span>
+                <button type="submit">Add</button>
+            </div>
+        </div>
+        <br />
+      </div>
+    </div> 
+
+
+    <div class="column">
+    <div class="cart_picture">
+      <div class="photo"><img id="id_user_picture5" src="/static/tartan_eats/media/pic1.jpeg" width="80" height="80" ></div> 
+      <div class="photo"><img id="id_user_picture6" src="/static/tartan_eats/media/pic2.jpeg" width="80" height="80" ></div> 
+      <div class="photo"><img id="id_user_picture7" src="/static/tartan_eats/media/pic3.jpeg" width="80" height="80" ></div>
+    </div>
+    </div>
+    
+    <div class="column">
+    <div class="cart_items" > 
+      <div class="cart_item">
+        <a id="cuisine_name">Fried Chicken     </a>
+        <label id="item-quantity">    $18.99 * 2</label>
+        <br />
+        <button type="submit">delete</button>
+        <br />
+      </div> 
+
+      <div class="cart_item">
+        <a id="cuisine_name">Family Bucket     </a>
+        <label id="item-quantity">   $28.99 * 1</label>
+        <br />
+        <button type="submit">delete</button>
+        <br />
+      </div> 
+        
+      <div class="cart_item">
+        <a id="cuisine_name">Roll with Drink     </a>
+        <label id="item-quantity">    $23 * 1 </label>
+        <br />
+        <button type="submit">delete</button>
+        <br />
+      </div> 
+</div>
+<div class="place-order">
+    <a id="subtotal">Subtotal: $70.98    </a>
+    <br />
+    <button type="submit">Place Order</button>
+
+</div>
+</main>
+  
+{% endblock %}
+

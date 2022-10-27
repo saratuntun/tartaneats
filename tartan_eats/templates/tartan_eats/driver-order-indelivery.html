@@ -1,0 +1,111 @@
+{% extends "tartan_eats/base.html" %}
+
+{% block pagename %}
+          <section class="page-header">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="content">
+                    <h1 class="page-name">Driver</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+{% endblock %}
+
+{% block content %}
+<section class="user-dashboard page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="list-inline dashboard-menu text-center">
+          <li>
+            <a href="{% url 'driver-home' %}">Profile Details</a>
+          </li>
+          <li>
+            <a class="active" href="{% url 'driver-order-indelivery' %}"
+              >Orders - In Delivery</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'driver-order-completed' %}">Orders - Completed</a>
+          </li>
+        </ul>
+        <div class="dashboard-wrapper dashboard-user-profile">
+        <div class="media">
+				<!-- Order Details -->
+				<div class="contact-details col-md-6 " style="width: 400px">
+					<div class="media-body" >
+            {% if not delivery %}
+            <div>{{error}}</div>
+            {% else %}
+            <ul class="user-profile-list" >
+							<li><span>Order:</span>#{{delivery.order.id}}</li>
+              <li><span>Order time:</span>{{delivery.order.order_time}}</li>
+							<li><span>Customer Name:</span>{{delivery.order.customer.firstname}} {{order.customer.lastname}}</li>
+							<li><span>Customer Phone:</span>{{delivery.order.customer.phone}}</li>
+							<li><span>Customer Address:</span>{{customer_full_address}}</li>
+              <li><span>Total Amount:</span>{{delivery.order.total_amount}}</li>
+						</ul>
+            {% endif%}
+					</div>
+				</div>
+				<!-- / End Order Details -->
+				<!-- Map Location -->
+                {% if delivery is not None %}
+				<div class="contact-details col-md-6 " >
+                    <div class="media-body">
+{#                        {% if cnt == 0 %}#}
+{#                        <iframe width="650" height="500" style="border:0" loading="lazy" allowfullscreen#}
+{#                                src="https://www.google.com/maps/embed/v1/directions?origin=place_id:#}
+{#{{ realtime_position_id }}&destination=place_id:{{ destination_id  }}&waypoints={{ waypoints }}&key={{ key }}">#}
+{#                        </iframe>#}
+{#                        {% else %}#}
+                        <iframe width="650" height="500" style="border:0" loading="lazy" allowfullscreen
+                                src="https://www.google.com/maps/embed/v1/directions?origin=place_id:
+{{ realtime_position_id }}&destination=place_id:{{ destination_id }}&key={{ key }}">
+                        </iframe>
+{#                        {% endif %}#}
+                    </div>
+					<a href="{% url 'driver-update-location'  %}" class="btn btn-primary mt-20"
+                       >Update
+                        location
+                    </a >
+                  <a
+                    href="{% url 'driver-change-delivery' %}"
+                    class="btn btn-primary mt-20"
+                    >Finish Delivery</a>
+				</div>
+				<!-- / End Location -->
+                {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Google Mapl -->
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ROFTaWb5oJTufnDl_Ig6xTGXL40nWb0&callback=initMap">
+</script>
+{% load static%}
+    <script type="text/javascript" src="{% static 'plugins/google-map/gmap.js' %}"></script>
+
+<script>
+	function initMap() {
+		// The location of Uluru
+		const uluru = { lat: 40.440624, lng: -79.995888 };
+		// The map, centered at Uluru
+		const map = new google.maps.Map(document.getElementById("map"), {
+			zoom: 16,
+			center: uluru,
+		});
+		// The marker, positioned at Uluru
+		const marker = new google.maps.Marker({
+			position: uluru,
+			map: map,
+		});
+	}
+</script>
+{% endblock %}

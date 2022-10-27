@@ -1,0 +1,28 @@
+{% extends "tartan_eats/base.html" %} {% block navbar %}
+
+{% endblock %}
+{% block content %}
+<section class="user-dashboard" style="padding-bottom: 70px">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="dashboard-wrapper user-dashboard text-center">
+{% load socialaccount %}
+{% if user.is_authenticated %}
+ <h1>My Google Login Project</h1>
+ <p>Welcome, {{ user.username }} !</p>
+
+ {% else %}
+ <h1>Login with google</h1>
+ <a href="{% provider_login_url 'google' %}">Login using your Google account</a>
+{% endif %}
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+
+
+
+
+{% endblock %}

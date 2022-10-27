@@ -1,0 +1,114 @@
+{% extends "tartan_eats/base.html" %} {% block pagename %}
+<section class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="content">
+          <h1 class="page-name">Driver</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %} {% block content %}
+<section class="user-dashboard page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="list-inline dashboard-menu text-center">
+          <li><a href="{% url 'driver-home' %}">Profile Details</a></li>
+          <li>
+            <a href="{% url 'driver-order-indelivery' %}"
+              >Orders - In Delivery</a
+            >
+          </li>
+          <li>
+            <a class="active" href="{% url 'driver-order-completed' %}"
+              >Orders - Completed</a
+            >
+          </li>
+        </ul>
+        <div class="dashboard-wrapper user-dashboard">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Order Time</th>
+                  <th>Customer Name</th>
+                  <th>Customer Phone</th>
+                  <th>Total Price</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for delivery in deliveries %}
+                <tr>
+                  <td>{{delivery.order.id}}</td>
+                  <td>{{delivery.order.order_time}}</td>
+                  <td>
+                    {{delivery.order.customer.firstname}}
+                    {{delivery.order.customer.lastname}}
+                  </td>
+									<td>
+                    {{delivery.order.customer.phone}}
+                  </td>
+                  <td>{{delivery.order.total_amount}}</td>
+                  <td>
+                    <span class="label label-primary"
+                      >{{delivery.order.order_status}}</span>
+                  </td>
+                </tr>
+                {% endfor %} {% comment %}
+                <tr>
+                  <td>#451231</td>
+                  <td>Mar 25, 2016</td>
+                  <td>2</td>
+                  <td>$99.00</td>
+                  <td><span class="label label-primary">Processing</span></td>
+                  <td><a href="order.html" class="btn btn-default">View</a></td>
+                </tr>
+                <tr>
+                  <td>#451231</td>
+                  <td>Mar 25, 2016</td>
+                  <td>3</td>
+                  <td>$150.00</td>
+                  <td><span class="label label-success">Completed</span></td>
+                  <td><a href="order.html" class="btn btn-default">View</a></td>
+                </tr>
+                <tr>
+                  <td>#451231</td>
+                  <td>Mar 25, 2016</td>
+                  <td>3</td>
+                  <td>$150.00</td>
+                  <td><span class="label label-danger">Canceled</span></td>
+                  <td><a href="order.html" class="btn btn-default">View</a></td>
+                </tr>
+                <tr>
+                  <td>#451231</td>
+                  <td>Mar 25, 2016</td>
+                  <td>2</td>
+                  <td>$99.00</td>
+                  <td><span class="label label-info">On Hold</span></td>
+                  <td><a href="order.html" class="btn btn-default">View</a></td>
+                </tr>
+                <tr>
+                  <td>#451231</td>
+                  <td>Mar 25, 2016</td>
+                  <td>3</td>
+                  <td>$150.00</td>
+                  <td><span class="label label-warning">Pending</span></td>
+                  <td><a href="order.html" class="btn btn-default">View</a></td>
+                </tr>
+                {% endcomment %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

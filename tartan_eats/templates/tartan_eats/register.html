@@ -1,0 +1,28 @@
+{% extends "tartan_eats/base.html" %}
+{% block navbar %}
+<a id="id_register_link">Costomer</a> &emsp;
+<a id="id_register_link">Reasturant</a>&emsp;
+<a id="id_register_link">Driver</a>
+{% endblock %}
+
+{% block content %}
+{% load socialaccount %}
+    {% if user.is_authenticated %}
+    <div class="form-signin text-center">
+
+
+        <h1 id="id_page_name" class="h3 mb-3 fw-normal">Register</h1>
+        <p>Welcome, {{ user.username }} !</p>
+        <div>Please register as </div>>
+
+        <a href="{% url 'register-customer' %}">Customer</a> &emsp;
+        <a href="{% url 'register-restaurant' %}">Restaurant</a>&emsp;
+        <a href="{% url 'register-driver' %}">Driver</a>
+
+        {% else %}
+        <h1>Login with google</h1>
+        <a href="{% provider_login_url 'google' %}">Login with Google</a>
+    </div>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "tartan_eats/base.html" %} {% block navbar %} {% comment %}
+<a style="text-decoration: underline">Customer</a> &emsp;
+<a>Reasturant</a>&emsp; <a>Driver</a> {% endcomment %}
+<li><a style="text-decoration: underline">Customer</a> &emsp;</li>
+<li>
+  <a>Reasturant</a>
+</li>
+<li>
+  <a>Driver</a>
+</li>
+{% endblock %} {% block content %}
+<section class="user-dashboard" style="padding-bottom: 70px">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="dashboard-wrapper user-dashboard text-center">
+          <form
+            class="form text-center"
+            method="post"
+            action="{% url 'register-customer' %}"
+            enctype="multipart/form-data"
+          >
+            <table>
+              {{form}}
+            </table>
+            {% csrf_token %}
+            <button type="submit">
+              <div class="btn-text">REGISTER</div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

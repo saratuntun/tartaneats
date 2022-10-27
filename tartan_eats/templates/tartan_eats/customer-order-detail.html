@@ -1,0 +1,83 @@
+{% extends "tartan_eats/base.html" %} 
+
+{% block navbar %} 
+<li>
+  <a href="{% url 'customer-home' %}">Home</a>
+</li>
+<!-- / Home -->
+<!-- My Orders -->
+<li>
+  <a href="{% url 'customer-history-order' %}">My Orders</a>
+</li>
+<!-- / My Orders -->
+<!-- My Account -->
+<li>
+  <a href="{% url 'customer-account' %}">My Account</a>
+</li>
+{% endblock %}
+
+{% block pagename %} 
+<section class="page-header">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="content">
+        <h1 class="page-name">Order Detail</h1>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="page-wrapper">
+	<div class="contact-section">
+		<div class="container">
+			<div class="row">
+
+
+				<div class="dashboard-wrapper dashboard-user-profile">
+					<div class="media">
+							<!-- Order Details -->
+							<div class="contact-details col-md-6 " >
+								<div class="media-body">
+									<ul class="user-profile-list" style="width: 450px">
+										<h1> Order # {{order.id}} </h1>
+										<h3> Status {{order.order_status}} </h3>
+										<li><span>Customer Name: </span> {{order.real_first_name}} {{order.real_last_name}} </li>
+										<li><span>Order Time: </span> {{order.order_time}} </li>
+										<li><span>Address: </span> {{order.real_address1}} {{order.real_address2}} {{order.customer.city}}, {{order.customer.zipcode}}</li>
+										<li><span>Contact Phone: </span> {{order.real_phone}} </li>
+										<li><span>Contact Email: </span> {{order.real_email}} </li>
+										<li><span>Restaurant Name: </span> {{order.restaurant.restaurant_name}} </li>
+                                        <li><span>Restaurant Location:</span>{{ order.restaurant.restaurant_address }}</li>
+                                        {% for item in order_cuisines %}
+										<li>{{item.cuisine.cuisine_name}}  ${{item.cuisine.price}} x {{item.item_quantity}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+                                {% if order.order_status == 'in-delivery' or order.order_status == 'pending'%}
+                                    <div class="media-body">
+                                        <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+                                                src="https://www.google.com/maps/embed/v1/directions?origin=place_id:{{ realtime_position_id }}&destination=place_id:{{destination_id  }}&key={{ key }}">
+                                        </iframe>
+                                    </div>
+                                {%  endif %}
+
+							</div>
+
+					</div>
+				  </div>	
+			</div> <!-- end row -->
+		</div> <!-- end container -->
+	</div>
+</section>
+
+
+
+{% endblock %}
+
+   
+   
+

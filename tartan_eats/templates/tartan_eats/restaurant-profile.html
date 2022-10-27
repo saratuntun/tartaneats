@@ -1,0 +1,224 @@
+<!--
+THEME: Aviato | E-commerce template
+VERSION: 1.0.0
+AUTHOR: Themefisher
+
+HOMEPAGE: https://themefisher.com/products/aviato-e-commerce-template/
+DEMO: https://demo.themefisher.com/aviato/
+GITHUB: https://github.com/themefisher/Aviato-E-Commerce-Template/
+
+WEBSITE: https://themefisher.com
+TWITTER: https://twitter.com/themefisher
+FACEBOOK: https://www.facebook.com/themefisher
+-->
+{% extends "tartan_eats/base.html" %}
+
+{% block navbar %}
+    <li>
+        <a href="{% url 'order-list' %}">My Orders</a>
+    </li>
+    <li>
+        <a href="{% url 'restaurant-home' %}">My Account</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<section class="single-product">
+    <div class="container">
+        <div class="row mt-20">
+            <div class="col-md-5">
+                <div class="single-product-slider">
+                    <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+                        <div class='carousel-outer'>
+                            <!-- me art lab slider -->
+                            <div class='carousel-inner '>
+                                <div class='item active'>
+                                    {% load static %}
+                                    {% if not restaurant.restaurant_picture %} 
+                                        <img src="{% static 'images/restaurant-default.jpeg' %}" alt='no picture available'/> 
+                                    {% else %}  
+                                        <img src="{% url 'res-photo' user.id "restaurant" %}" alt="res picture">
+                                     {% endif %}   
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="single-product-details">
+                    <h2 id="res-name">{{restaurant.restaurant_name}}</h2>
+                    <p class="product-price">Restaurant ID - {{ request.user.id }}</p>
+                    <form action="{% url 'restaurant-home' %}" method="POST" enctype="multipart/form-data">
+                        <table>
+                            {{ profile_form }}
+                        </table>
+                        {% csrf_token %}
+                        <button type="submit" name="profile_button">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="products related-products section">
+    <div class="container">
+        <div class="row">
+            <section class="user-dashboard page-wrapper">
+                <div class="col-md-12">
+                    <div class="dashboard-wrapper user-dashboard">
+                        <div class="table-responsive">
+                            <div class="title text-center">
+                                <h2>Menu - Online Cuisine</h2>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Cuisine Name</th>
+                                    <th>Description</th>
+                                    <th>Picture</th>
+                                    <th>Price</th>
+                                    <th>Online</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for cuisine in cuisine_list %}
+                                    <tr>
+                                        <td>{{ cuisine.cuisine_name }}</td>
+                                        <td>{{ cuisine.cuisine_description }}</td>
+                                        <td>
+                                            {% load static %}
+                                            {% if not cuisine.cuisine_picture %}
+                                                <img src="{% static 'images/cuisine-default.jpeg' %}" alt='no picture available'  height="100" width="120"/> 
+                                            {% else %}
+                                                <img src="{% url 'res-photo' cuisine.id "cuisine" %}" alt="res
+                                                         picture" height="100" width="120">
+                                            {% endif %}
+                                        </td>
+                                        <td>${{ cuisine.price }}</td>
+                                        <td>{{ cuisine.online }}</td>
+                                        <td>
+                                            <form enctype="multipart/form-data" action=
+                                                    "{% url 'restaurant-home' cuisine.id %} "
+                                                  method="post">
+                                                <button type="submit" class="btn
+                                                            btn-default" name="offline_button">Offline</button>
+                                                {%  csrf_token %}
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {%  endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="user-dashboard page-wrapper">
+                <div class="col-md-12">
+                    <div class="dashboard-wrapper user-dashboard">
+                        <div class="table-responsive">
+                            <div class="title text-center">
+                                <h2>Menu - Offline Cuisine</h2>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Cuisine Name</th>
+                                    <th>Description</th>
+                                    <th>Picture</th>
+                                    <th>Price</th>
+                                    <th>Online</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for cuisine in offline_cuisine_list %}
+                                    <tr>
+                                        <td>{{ cuisine.cuisine_name }}</td>
+                                        <td>{{ cuisine.cuisine_description }}</td>
+                                        <td>
+                                            {% load static %}
+                                            {% if not cuisine.cuisine_picture %}
+                                                <img src="{% static 'images/cuisine-default.jpeg' %}" alt='no picture available'  height="100" width="120"/> 
+                                            {% else %}
+                                                <img src="{% url 'res-photo' cuisine.id "cuisine" %}" alt="res
+                                                         picture" height="100" width="120">
+                                            {% endif %}
+                                        </td>
+                                        <td>${{ cuisine.price }}</td>
+                                        <td>{{ cuisine.online }}</td>
+                                        <td>
+                                            <form enctype="multipart/form-data" action=
+                                                    "{% url 'restaurant-home' cuisine.id %} "
+                                                  method="post">
+                                                <button type="submit" class="btn
+                                                            btn-default" name="online_button">Online</button>
+                                                {%  csrf_token %}
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {%  endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <section class="user-dashboard page-wrapper">
+                <div class="col-md-12">
+                    <div class="dashboard-wrapper user-dashboard">
+                        <div class="table-responsive">
+                            <div class="title text-center">
+                                <h2>Add Cuisine</h2>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Cuisine Name</th>
+                                    <th>Description</th>
+                                    <th>Picture</th>
+                                    <th>Price</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <form method="post" action="{% url 'restaurant-home' %}" enctype="multipart/form-data">
+                                        {% for field in cuisine_form.visible_fields %}
+                                            <td class="add-cusine-content">{{field}}</td>
+                                        {% endfor %}
+                                        <td><button type="submit" class="btn btn-default"
+                                                    name="add-button">Add</button></td>
+                                        {% csrf_token %}
+                                    </form>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+
+{% if error is not None %}
+    <script>
+        alert('{{ error }}');
+    </script>
+{% endif %}
+
+
+{% endblock %}

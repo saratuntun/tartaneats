@@ -1,0 +1,36 @@
+{% extends "tartan_eats/base.html" %} 
+{% block navbar %}
+<li><a>Customer</a> &emsp;</li>
+<li>
+  <a>Reasturant</a>
+</li>
+<li>
+  <a style="text-decoration: underline">Driver</a>
+</li>
+{% endblock %} {% block content %}
+<section class="user-dashboard" style="padding-bottom: 70px">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="dashboard-wrapper user-dashboard text-center">
+          <form
+            enctype="multipart/form-data"
+            class="form text-center"
+            method="post"
+            action="{% url 'register-driver' %}"
+          >
+            <table>
+              {{form}}
+            </table>
+            {% csrf_token %}
+            <button type="submit">
+              <div class="btn-text">REGISTER</div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
